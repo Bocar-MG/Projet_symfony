@@ -1,0 +1,13 @@
+
+
+{% block title %} Seance{% endblock %}
+
+{% block body %}
+    <h1>Modifier  Seance</h1>
+
+    {{ include('admin/film/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gestionfilm') }}">Retour au liste</a>
+
+    {{ include('admin/film/_delete_form.html.twig') }}
+{% endblock %}

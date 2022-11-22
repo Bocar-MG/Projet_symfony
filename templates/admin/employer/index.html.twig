@@ -1,0 +1,200 @@
+{% extends "admin/layout.html.twig" %}
+
+
+{% block nom_page %}
+
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Gestion des employés</h4>
+                    <div class="ms-auto text-end">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button  " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Ajouter un employer
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="card">
+                            <form class="form-horizontal"  method="POST" action="" enctype="multipart/form-data">
+                                <div class="card-body">
+
+                                    <div class="form-group row">
+                                        <label
+                                                for="fname"
+                                                class="col-sm-3 text-end control-label col-form-label"
+                                        >Nom </label
+                                        >
+                                        <div class="col-sm-9">
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="fname"
+                                                    name=""
+                                                    placeholder=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label
+                                                for="lname"
+                                                class="col-sm-3 text-end control-label col-form-label"
+                                        >Prenom</label
+                                        >
+                                        <div class="col-sm-9">
+                                            <select
+                                                    class="select2 form-select shadow-none"
+                                                    style="width: 100%; height: 36px"
+                                            >
+                                                <option value="">Masculin</option>
+                                                <option value="">Feminin</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label
+
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    >Age</label
+                                    >
+                                    <div class="col-sm-9">
+                                        <input
+                                                type="number"
+                                                class="form-control"
+
+
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label
+                                            for="cono1"
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    >Fonction</label
+                                    >
+                                    <div class="col-sm-9">
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="cono1"
+
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label
+                                            for="cono1"
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    >Salaire</label
+                                    >
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" />
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary">
+                                    Ajouter
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary">
+                                    Ajouter
+                                </button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">Liste des Employes</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped dataTable text-sm">
+                    <thead>
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Sexe</th>
+                        <th>Fonction</th>
+                        <th>Salaire</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <!-- ici on met le foreach-->
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button
+                                    type="button"
+                                    class="btn btn-cyan btn-sm text-white"
+                            >
+                                Modifier
+                            </button>
+
+                            <button
+                                    type="button"
+                                    class="btn btn-danger btn-sm text-white"
+                            >
+                                Archiver
+                            </button>
+                        </td>
+
+
+
+
+
+                    </tr>
+                    <!-- ici on met le end foreach-->
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+
+
+    </div>
+{% endblock %}
+
+
+
+

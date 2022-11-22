@@ -1,0 +1,123 @@
+{% extends "admin/layout.html.twig" %}
+
+{% block nom_page %}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Gestion des films</h4>
+                <div class="ms-auto text-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+
+
+
+    {% block body %}
+    <div class="container-fluid">
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button  " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Modifier un film
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="card">
+                            <form class="form-horizontal"  method="POST" action="" enctype="multipart/form-data">
+
+
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        {{ form_start(form) }}
+                                        <label
+                                                for="fname"
+                                                class="col-sm-3 text-end control-label col-form-label"
+                                        > {{ form_label(form.Titre) }} </label
+                                        >
+                                        <div class="col-sm-9">
+
+
+                                            {{ form_widget(form.Titre) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label
+                                                for="lname"
+                                                class="col-sm-3 text-end control-label col-form-label"
+                                        >{{ form_label(form.Categorie) }}</label
+                                        >
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.Categorie) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label
+
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    > {{ form_label(form.Affiche) }}</label
+                                    >
+                                    <div class="col-sm-9">
+
+
+                                        {{ form_widget(form.Affiche) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label
+                                            for="cono1"
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    >{{ form_label(form.BandeAnnonce) }}</label
+                                    >
+                                    <div class="col-sm-9">
+
+
+                                        {{ form_widget(form.BandeAnnonce) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label
+                                            for="cono1"
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    >{{ form_label(form.Description) }}</label
+                                    >
+                                    <div class="col-sm-9">
+
+
+                                        {{ form_widget(form.Description) }}
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                {{ form_rest(form) }}
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+
+                            </div>
+                        </div>
+
+
+                        </form>
+                        {{ form_end(form) }}
+
+                    </div>
+                    {% endblock %}

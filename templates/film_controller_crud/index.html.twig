@@ -1,0 +1,42 @@
+{% extends "admin/layout.html.twig" %}
+
+{% block title %}Film index{% endblock %}
+
+{% block body %}
+    <h1>Film index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Affiche</th>
+            <th>BandeAnnonce</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.id }}</td>
+                <td>{{ film.Titre }}</td>
+                <td>{{ film.Description }}</td>
+                <td>{{ film.Affiche }}</td>
+                <td>{{ film.BandeAnnonce }}</td>
+
+                <td>
+                    <a href="{{ path('app_film_controller_crud_show', {'id': film.id}) }}">show</a>
+                    <a href="{{ path('app_film_controller_crud_edit', {'id': film.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_film_controller_crud_new') }}">Create new</a>
+{% endblock %}

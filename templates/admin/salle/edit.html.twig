@@ -1,0 +1,13 @@
+
+
+{% block title %} Salle{% endblock %}
+
+{% block body %}
+    <h1>Modifier  Salle </h1>
+
+    {{ include('admin/salle/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gestionsalle') }}">Retour au liste</a>
+
+    {{ include('admin/salle/_delete_form.html.twig') }}
+{% endblock %}

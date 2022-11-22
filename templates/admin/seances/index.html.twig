@@ -1,0 +1,196 @@
+{% extends "admin/layout.html.twig" %}
+
+
+{% block nom_page %}
+
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Gestion des séances</h4>
+                    <div class="ms-auto text-end">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button  " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Ajouter une Seance
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="card">
+                            <form class="form-horizontal"  method="POST" action="" enctype="multipart/form-data">
+
+
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        {{ form_start(form) }}
+                                        <label
+                                                for="fname"
+                                                class="col-sm-3 text-end control-label col-form-label"
+                                        > {{ form_label(form.Date) }} </label
+                                        >
+                                        <div class="col-sm-9">
+
+
+                                            {{ form_widget(form.Date) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label
+                                                for="lname"
+                                                class="col-sm-3 text-end control-label col-form-label"
+                                        >{{ form_label(form.Heure) }}</label
+                                        >
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.Heure) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label
+
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    > {{ form_label(form.film) }}</label
+                                    >
+                                    <div class="col-sm-9">
+
+
+                                        {{ form_widget(form.film) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label
+                                            for="cono1"
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    >{{ form_label(form.salle)}}</label>
+
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.salle) }}
+                                    </div>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label
+                                            for="cono1"
+                                            class="col-sm-3 text-end control-label col-form-label"
+                                    >{{ form_label(form.Etat) }}</label
+                                    >
+                                    <div class="col-sm-9">
+
+
+                                        {{ form_widget(form.Etat) }}
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                {{ form_rest(form) }}
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                {{ form_end(form) }}
+
+                            </div>
+                        </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">Liste des Seances</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped dataTable text-sm">
+                    <thead>
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Date</th>
+                        <th>Heure</th>
+                        <th>Film</th>
+                        <th>Salle</th>
+                        <th>Etat</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for seance in seances %}
+                        <tr>
+                            <!-- ici on met le foreach-->
+
+                            <td> {{ seance.id }}</td>
+                            <td>{{ seance.Date|date('Y-m-d') }}</td>
+                            <td>{{ seance.Heure|date('H:i:s') }}</td>
+                            <td>{{ seance.film.Titre }}</td>
+                            <td>{{ seance.salle }}</td>
+                            <td>{% if seance.Etat %}
+                              <div class="text-light bg-success">Confirmé</div>
+                                {% else %}
+                                    <div class="text-light bg-danger">Non Confirmé</div>
+                                    {% endif %}
+
+                            </td>
+                            <td>
+                                <button
+                                        type="button"
+                                        class="btn btn-cyan btn-sm text-white"
+                                >
+                                    <a href="{{ path('seance_edit', {'id': seance.id}) }}">Modifier</a>
+                                </button>
+
+                                <button
+                                        type="button"
+                                        class="btn btn-danger btn-sm text-white"
+                                >
+                                    Archiver
+                                </button>
+                            </td>
+
+
+
+
+
+                        </tr>
+                    {% endfor %}
+                    <!-- ici on met le end for-->
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+
+
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
