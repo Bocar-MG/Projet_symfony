@@ -24,11 +24,116 @@
             </div>
         </div>
         {% endblock %}
-{% block body %}
-    <div class="container-fluid">
+
+        {% block body %}
+        <div class="container-fluid">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button  " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Ajouter un spectacle
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="card">
+                                <form class="form-horizontal"  method="POST" action="" enctype="multipart/form-data">
+                                    <f class="card-body">
+
+                                        <div class="form-group row">
+                                            {{ form_start(form) }}
+                                            <label
+                                                    for="fname"
+                                                    class="col-sm-3 text-end control-label col-form-label"
+                                            >{{ form_label(form.NomS) }} </label
+                                            >
+                                            <div class="col-sm-9">
+                                                {{ form_widget(form.NomS) }}
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label
+                                                    for="fname"
+                                                    class="col-sm-3 text-end control-label col-form-label"
+                                            >{{ form_label(form.Artiste) }} </label
+                                            >
+                                            <div class="col-sm-9">
+                                                {{ form_widget(form.Artiste) }}
+
+                                            </div>
+                                        </div>
+                                        <div class="border-top">
+                                            <div class="card-body">
+                                                {{ form_rest(form) }}
+                                                <button type="submit" class="btn btn-primary">
+                                                    Ajouter
+                                                </button>
+                                                {{ form_end(form) }}
+
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Liste des Spectacles</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped dataTable text-sm">
+                            <thead>
+                            <tr>
+                                <th>Numero</th>
+                                <th>Nom</th>
+                                <th>Artiste</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for spectacle in spectacles %}
+                                <tr>
+                                    <!-- ici on met le foreach-->
+
+                                    <td>{{  spectacle.id }}</td>
+                                    <td>{{  spectacle.NomS}}</td>
+                                    <td>{{ spectacle.Artiste }}</td>
+
+                                    <td>
+                                        <button
+                                                type="button"
+                                                class="btn btn-cyan btn-sm text-white"
+                                        >
+                                            <a href="{{ path('spectacle_edit', {'id': spectacle.id}) }}">Modifier</a>
+                                        </button>
+
+                                        <button
+                                                type="button"
+                                                class="btn btn-danger btn-sm text-white"
+                                        >
+                                            Archiver
+                                        </button>
+                                    </td>
 
 
 
 
-    </div>
-{% endblock %}
+
+                                </tr>
+                            {% endfor %}
+                            <!-- ici on met le end foreach-->
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+
+
+            </div>
+            {% endblock %}
+
+

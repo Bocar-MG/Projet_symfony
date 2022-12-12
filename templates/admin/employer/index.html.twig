@@ -41,35 +41,37 @@
                                 <div class="card-body">
 
                                     <div class="form-group row">
+                                        {{ form_start(form) }}
                                         <label
                                                 for="fname"
                                                 class="col-sm-3 text-end control-label col-form-label"
-                                        >Nom </label
+                                        >{{ form_label(form.Nom) }} </label
                                         >
                                         <div class="col-sm-9">
-                                            <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="fname"
-                                                    name=""
-                                                    placeholder=""
-                                            />
+                                            {{ form_widget(form.Nom) }}
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label
+                                                for="fname"
+                                                class="col-sm-3 text-end control-label col-form-label"
+                                        >{{ form_label(form.Prenom) }} </label
+                                        >
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.Prenom) }}
+
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label
                                                 for="lname"
                                                 class="col-sm-3 text-end control-label col-form-label"
-                                        >Prenom</label
-                                        >
+                                        >{{ form_label(form.Sexe) }}</label>
                                         <div class="col-sm-9">
-                                            <select
-                                                    class="select2 form-select shadow-none"
-                                                    style="width: 100%; height: 36px"
-                                            >
-                                                <option value="">Masculin</option>
-                                                <option value="">Feminin</option>
-                                            </select>
+                                            {{ form_widget(form.Sexe) }}
+
+
                                         </div>
                                     </div>
 
@@ -78,58 +80,49 @@
                                     <label
 
                                             class="col-sm-3 text-end control-label col-form-label"
-                                    >Age</label
+                                    >{{ form_label(form.Age) }}</label
                                     >
                                     <div class="col-sm-9">
-                                        <input
-                                                type="number"
-                                                class="form-control"
+                                        {{ form_widget(form.Age) }}
 
-
-                                        />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label
                                             for="cono1"
                                             class="col-sm-3 text-end control-label col-form-label"
-                                    >Fonction</label
+                                    >{{ form_label(form.Fonction) }}</label
                                     >
                                     <div class="col-sm-9">
-                                        <input
-                                                type="text"
-                                                class="form-control"
-                                                id="cono1"
+                                        {{ form_widget(form.Fonction) }}
 
-                                        />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label
                                             for="cono1"
                                             class="col-sm-3 text-end control-label col-form-label"
-                                    >Salaire</label
+                                    >{{ form_label(form.Salaire) }}</label
                                     >
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" />
+                                        {{ form_widget(form.Salaire) }}
+
                                     </div>
                                 </div>
                         </div>
                         <div class="border-top">
                             <div class="card-body">
+                                {{ form_rest(form) }}
                                 <button type="submit" class="btn btn-primary">
                                     Ajouter
                                 </button>
+                                {{ form_end(form) }}
+
+
                             </div>
                         </div>
 
-                        <div class="border-top">
-                            <div class="card-body">
-                                <button type="submit" class="btn btn-primary">
-                                    Ajouter
-                                </button>
-                            </div>
-                        </div>
+
                         </form>
                     </div>
                 </div>
@@ -147,27 +140,30 @@
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Sexe</th>
+                        <th>Age</th>
                         <th>Fonction</th>
                         <th>Salaire</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
+                    {% for employer in employers %}
                     <tr>
                         <!-- ici on met le foreach-->
 
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{  employer.id }}</td>
+                        <td>{{  employer.Nom}}</td>
+                        <td>{{ employer.Prenom }}</td>
+                        <td>{{  employer.Sexe }}</td>
+                        <td>{{  employer.Age }}</td>
+                        <td>{{  employer.Fonction }}</td>
+                        <td>{{  employer.Salaire }}</td>
                         <td>
                             <button
                                     type="button"
                                     class="btn btn-cyan btn-sm text-white"
                             >
-                                Modifier
+                                <a href="{{ path('employer_edit', {'id': employer.id}) }}">Modifier</a>
                             </button>
 
                             <button
@@ -183,6 +179,7 @@
 
 
                     </tr>
+                    {% endfor %}
                     <!-- ici on met le end foreach-->
 
                     </tbody>

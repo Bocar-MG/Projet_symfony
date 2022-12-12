@@ -1,0 +1,11 @@
+{% block title %} Superette{% endblock %}
+
+{% block body %}
+    <h1>Modifier  Produit </h1>
+
+    {{ include('admin/superette/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gestionsuperette') }}">Retour au liste</a>
+
+    {{ include('admin/superette/_delete_form.html.twig') }}
+{% endblock %}

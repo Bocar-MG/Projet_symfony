@@ -4,7 +4,6 @@ namespace App\Controller\admin\seances;
 
 
 
-use App\Entity\Salle;
 use App\Entity\Seance;
 
 use App\Form\SeanceType;
@@ -38,10 +37,7 @@ class SeanceController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Seance::class);
         $listseances = $repo->findAll();
 
-        $repo2 = $this->getDoctrine()->getRepository(Salle::class);
-        $listsalle= $repo2->findAll();
-
-        return $this->render("admin/seances/index.html.twig", array('seances'=>$listseances,'salles'=>$listsalle, 'form' => $form->createView()));
+        return $this->render("admin/seances/index.html.twig", array('seances'=>$listseances, 'form' => $form->createView()));
     }
 
     // ---------------------- Partie Crud ----------------------------------
